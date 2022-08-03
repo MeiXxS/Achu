@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './home';
+import { useState } from 'react';
+import Info from './Info';
 
 function App() {
+const [paginaactual,setpaginaactual] = useState ("Home");
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <h1>Luvar</h1>
+       <span style={{paddingBottom:20}}>{paginaactual}</span>
+       
+      </header> <div style={{display:"flex", justifyContent:"flex-start", backgroundColor:"black", padding: 15}}>
+       <button onClick={()=>{setpaginaactual("Home")}}>Home</button>
+       <button onClick={()=>{setpaginaactual("Info")}}>Info</button>
+       </div>
+      {paginaactual === "Home" && <Home></Home>}
+      {paginaactual === "Info" && <Info></Info>}
     </div>
+    
   );
 }
 
